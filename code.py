@@ -53,4 +53,5 @@ def tri_selection(trafic, policy): # on prend en paramètre la liste de tous les
     n = len(trafic_copy) #pour savoir le nombre d'avion
 
     for i in range(n): 
-        index_min = i #on dit que l'avion le plus prioritaire est a l'indice i
+index_min = i #on dit que l'avion le plus prioritaire est a l'indice i
+#associer un score à un problème (+ le probleme est important plus le score est élevé) donc la somme définie la priorité
