@@ -63,4 +63,3 @@ def tri_selection(trafic): # on prend en paramètre la liste de tous les avion e
         trafic[i],trafic[min]=trafic[min],trafic[i]
        
     return trafic
-tri_selection(trafic)
