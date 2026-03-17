@@ -1,4 +1,10 @@
-Trafic_initial=[]
+trafic = [
+    {"id": "AF342", "fuel": 18, "medical": False, "technical_issue": False, "diplomatic_level": 2},
+    {"id": "LH908", "fuel": 25, "medical": False, "technical_issue": True,  "diplomatic_level": 1},
+    {"id": "BA117", "fuel": 14, "medical": True,  "technical_issue": False, "diplomatic_level": 3},
+    {"id": "EK202", "fuel": 40, "medical": False, "technical_issue": False, "diplomatic_level": 5},
+    {"id": "AZ721", "fuel": 9,  "medical": False, "technical_issue": False, "diplomatic_level": 1}
+]
 def check_avion(avion): # on crée une fonction qui va vérifier les infos de chqua avion.
     acquis = ["id","arrival_time","diplomatic_level","fuel","medical","technical_issue"] # on définit tous les paramètres a analyser
 # on va vérifier si chaque avion possède toutes les données necessaires
@@ -46,12 +52,15 @@ def policy_diplomatique(avion):
     priorite = -niveau
     return priorite
 
-
-
-def tri_selection(trafic, policy): # on prend en paramètre la liste de tous les avion et l'ordre de priorite
+def tri_insertion(trafic): # on prend en paramètre la liste de tous les avion et l'ordre de priorite
     trafic_copy = trafic.copy()  # on effectue une copie de la liste de base pour la garder comme tel
-    n = len(trafic_copy) #pour savoir le nombre d'avion
-
-    for i in range(n): 
-index_min = i #on dit que l'avion le plus prioritaire est a l'indice i
-#associer un score à un problème (+ le probleme est important plus le score est élevé) donc la somme définie la priorité
+    n = len(trafic)
+    for i in range(0, n-1):
+        min= i
+        for j in range(i+1, n):
+            if trafic[j]["fuel"] < trafic[min]["fuel"]:
+                min = j
+        trafic[i],trafic[min]=trafic[min],trafic[i]
+       
+    return trafic
+tri_insertion(trafic)
