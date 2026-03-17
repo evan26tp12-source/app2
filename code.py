@@ -52,7 +52,7 @@ def policy_diplomatique(avion):
     priorite = -niveau
     return priorite
 
-def tri_insertion(trafic): # on prend en paramètre la liste de tous les avion et l'ordre de priorite
+def tri_selection(trafic): # on prend en paramètre la liste de tous les avion et l'ordre de priorite
     trafic_copy = trafic.copy()  # on effectue une copie de la liste de base pour la garder comme tel
     n = len(trafic)
     for i in range(0, n-1):
@@ -63,4 +63,4 @@ def tri_insertion(trafic): # on prend en paramètre la liste de tous les avion e
         trafic[i],trafic[min]=trafic[min],trafic[i]
        
     return trafic
-tri_insertion(trafic)
+tri_selection(trafic)
