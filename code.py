@@ -66,4 +66,4 @@ def tri_selection(trafic): # on prend en paramètre la liste de tous les avion e
 for i in range ( len ( trafic ) ) : 
     trafic[i]["id"]+="/"+str( len(trafic) - i )
 print(trafic)
-
+# pour le tri des problèmes, on associe un score à chaque problème : +le problème est important, + le score est enlevé.
