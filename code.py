@@ -36,21 +36,32 @@ def info_avion(trafic):
 
 
 
-def policy_carburant(avion):
-    return avion["fuel"]# plus le fuel d'un avion est faible plus il sera prioritaire
+def policy_carburant(avion,avion1):
+    if avion["fuel"]>avion1["fuel"]:
+        return True 
+    else : 
+        return False
+    # plus le fuel d'un avion est faible plus il sera prioritaire
 
-
-def policy_medical(avion):
-    if avion["medical"] == True:
-        return 0
+def policy_medical(avion,avion1):
+    if avion["medical"] == True and avion1["medical"]==False:
+        return True
     else:
-        return 1 # si un avion n'a pas d'urgence medical, il est moins prioritaire
+        return False # si un avion n'a pas d'urgence medical, il est moins prioritaire
 
 
-def policy_diplomatique(avion):
-    niveau = avion["diplomatic_level"] #plus le niveau diplomatique est éleve, plus l'avion est prioritaire
-    priorite = -niveau
-    return priorite
+def policy_diplomatique(avion,avion1):
+    if avion["diplomatic_level"]>avion1["diplomatic_level"]:
+        return True
+    else: 
+        return False
+        
+def policy_technical(avion,avion1):
+    if avion["technical_issue"] == True and avion1["technical_issue"]==False:
+        return True
+    else:
+        return False 
+ 
 
 def tri_selection(trafic): # on prend en paramètre la liste de tous les avion et l'ordre de priorite
     trafic_copy = trafic.copy()  # on effectue une copie de la liste de base pour la garder comme tel
@@ -63,7 +74,8 @@ def tri_selection(trafic): # on prend en paramètre la liste de tous les avion e
         trafic[i],trafic[min]=trafic[min],trafic[i]
        
     return trafic
+
 for i in range ( len ( trafic ) ) : 
-    trafic[i]["id"]+="/"+str( len(trafic) - i )
+    trafic[i]["id"]+="/"+str( 4*(len(trafic) - i) )
 print(trafic)
 # pour le tri des problèmes, on associe un score à chaque problème : +le problème est important, + le score est enlevé.
