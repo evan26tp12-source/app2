@@ -69,7 +69,7 @@ def tri_selection(trafic): # on prend en paramètre la liste de tous les avion e
     for i in range(0, n-1):
         min= i
         for j in range(i+1, n):
-            if trafic[j]["fuel"] < trafic[min]["fuel"]:
+            if policy_carburant(trafic[j]["fuel"],trafic[min]["fuel"]==True):
                 min = j
         trafic[i],trafic[min]=trafic[min],trafic[i]
        
@@ -79,3 +79,17 @@ for i in range ( len ( trafic ) ) :
     trafic[i]["id"]+="/"+str( 4*(len(trafic) - i) )
 print(trafic)
 # pour le tri des problèmes, on associe un score à chaque problème : +le problème est important, + le score est enlevé.
+def tri_selection(trafic): # on prend en paramètre la liste de tous les avion et l'ordre de priorite  # on effectue une copie de la liste de base pour la garder comme tel
+    n = len(trafic)
+    for i in range(0, n-1):
+        min= i
+        for j in range(i+1, n):
+            if policy_technical(trafic[j]["technical_issue"],trafic[min]["technical_issue"]==True):
+                min = j
+        trafic[i],trafic[min]=trafic[min],trafic[i]
+       
+    return trafic
+
+for i in range ( len ( trafic ) ) : 
+    trafic[i]["id"]+="/"+str( 3*(len(trafic) - i) )
+print(trafic) 
