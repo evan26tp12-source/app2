@@ -93,7 +93,6 @@ def tri_selection(trafic): # on prend en paramètre la liste de tous les avion e
 for i in range ( len ( trafic ) ) : 
     for j in trafic[j]["id"]:
         if j=="/":
-            a=int(j+1+j+2)
-            trafic[i]["id"]= trafic[i]["id"]-    
-    trafic[i]["id"]=
+            a=int((j+1)+(j+2))
+            trafic[i]["id"]= trafic[i]["id"]-((j+1)+(j+2))+str(a+3*((len(trafic) - i))
 print(trafic) 
