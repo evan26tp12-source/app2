@@ -35,9 +35,12 @@ def info_avion(trafic):
         print("Heure d'arrivée :", plane["arrival_time"])
 
 
+for avion in trafic:
+    avion["score"] = 0
+
 
 def policy_carburant(avion,avion1):
-    if avion["fuel"]>avion1["fuel"]:
+    if avion["fuel"]<avion1["fuel"]:
         return True 
     else : 
         return False
@@ -62,37 +65,36 @@ def policy_technical(avion,avion1):
     else:
         return False 
  
-
-def tri_selection(trafic): # on prend en paramètre la liste de tous les avion et l'ordre de priorite
+def tri_selection_fuel(trafic): # on prend en paramètre la liste de tous les avion et l'ordre de priorite
     trafic_copy = trafic.copy()  # on effectue une copie de la liste de base pour la garder comme tel
     n = len(trafic)
     for i in range(0, n-1):
         min= i
         for j in range(i+1, n):
-            if policy_carburant(trafic[j]["fuel"],trafic[min]["fuel"]==True):
+            if policy_carburant(trafic[j],trafic[min])==True:
                 min = j
         trafic[i],trafic[min]=trafic[min],trafic[i]
        
     return trafic
 
+tri_selection_fuel(trafic)
 for i in range ( len ( trafic ) ) : 
-    trafic[i]["id"]+="/"+str( 4*(len(trafic) - i) )
-print(trafic)
+    trafic[i]["score"]+= 4*(len(trafic) - i) 
 # pour le tri des problèmes, on associe un score à chaque problème : +le problème est important, + le score est enlevé.
-def tri_selection(trafic): # on prend en paramètre la liste de tous les avion et l'ordre de priorite  # on effectue une copie de la liste de base pour la garder comme tel
+
+def tri_selection_technique(trafic): 
     n = len(trafic)
     for i in range(0, n-1):
-        min= i
+        vrai= i
         for j in range(i+1, n):
-            if policy_technical(trafic[j]["technical_issue"],trafic[min]["technical_issue"]==True):
-                min = j
-        trafic[i],trafic[min]=trafic[min],trafic[i]
-       
-    return trafic
+            if policy_technical(trafic[j],trafic[vrai])==True:
+                vrai = j
+        trafic[i],trafic[vrai]=trafic[vrai],trafic[i]
+        return trafic
 
+tri_selection_technique(trafic)
+print(trafic)
 for i in range ( len ( trafic ) ) : 
-    for j in trafic[j]["id"]:
-        if j=="/":
-            a=int((j+1)+(j+2))
-            trafic[i]["id"]= trafic[i]["id"]-((j+1)+(j+2))+str(a+3*((len(trafic) - i))
+    trafic[i]["score"]+= 3*(len(trafic) - i) 
+
 print(trafic) 
