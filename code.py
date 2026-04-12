@@ -106,7 +106,7 @@ def policy_technical(avion, avion1):
         return False
 
 
-# --- TRIS ET ATTRIBUTION DES SCORES ---
+# TRIS ET ATTRIBUTION DES SCORES 
 # Chaque critère est trié puis un score est attribué selon la position dans la liste.
 # Les poids sont : carburant x4, technique x3, médical x2, diplomatique x1
 
