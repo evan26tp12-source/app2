@@ -206,11 +206,11 @@ def tri_selection_final(trafic):
     # Tri final par score décroissant : l'avion avec le score le plus élevé atterrit en premier
     n = len(trafic)
     for i in range(0, n - 1):
-        max_idx = i
+        maximum= i
         for j in range(i + 1, n):
-            if trafic[j]["score"] > trafic[max_idx]["score"]:
-                max_idx = j
-        trafic[i], trafic[max_idx] = trafic[max_idx], trafic[i]
+            if trafic[j]["score"] > trafic[maximum]["score"]:
+                maximum = j
+        trafic[i], trafic[maximum] = trafic[maximum], trafic[i]
     return trafic
 
 
