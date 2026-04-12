@@ -6,7 +6,7 @@ def generate_random_traffic(n, scenario="normal"):
         
         fuel = random.randint(5, 50)
         medical =random.random() < 0.15
-        technical_issue = medical = random.random() < 0.12
+        technical_issue = random.random() < 0.12
         diplomatic_level = random.randint(1, 5)
         
         if scenario == "medical_crisis":
@@ -53,12 +53,12 @@ def load_trafic(data):
 def info_avion(trafic):
 
     for avion in trafic:
-        print("ID :", plane["id"])
-        print("Carburant :", plane["fuel"])
-        print("Urgence médicale :", plane["medical"])
-        print("Incident technique :", plane["technical_issue"])
-        print("Importance diplomatique :", plane["diplomatic_level"])
-        print("Heure d'arrivée :", plane["arrival_time"])
+        print("ID :", avion["id"])
+        print("Carburant :", avion["fuel"])
+        print("Urgence médicale :", avion["medical"])
+        print("Incident technique :", avion["technical_issue"])
+        print("Importance diplomatique :",avion["diplomatic_level"])
+        print("Heure d'arrivée :", avion["arrival_time"])
 
 
 def policy_carburant(avion,avion1):
@@ -120,7 +120,7 @@ def tri_insertion_technique(trafic):
         trafic[j + 1] = avion_courant
     return trafic
 
-tri_selection_technique(trafic)
+tri_insertion_technique(trafic)
 
 for i in range ( len ( trafic ) ) : 
     trafic[i]["score"]+= 3*(len(trafic) - i) 
@@ -140,7 +140,7 @@ def tri_insertion_medical(trafic):
         trafic[j + 1] = avion_courant
     return trafic
     
-tri_selection_medical(trafic)
+tri_insertion_medical(trafic)
 
 for i in range ( len ( trafic ) ) : 
     trafic[i]["score"]+= 2*(len(trafic) - i) 
